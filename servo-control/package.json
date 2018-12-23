@@ -12,6 +12,7 @@
     "@types/i2c-bus": "^1.0.19",
     "i2c-bus": "^4.0.7",
     "node-gyp": "^3.8.0",
+    "nw-gyp": "^3.6.3",
     "pca9685": "^4.0.3"
   },
   "devDependencies": {
