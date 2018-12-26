@@ -18,6 +18,10 @@ class ServoImpl implements Servo{
       position: this.pinPosition,
       move: pos
     } as MoveServoOptions);
+    moveServo({
+      position: this.pinPosition,
+      move: -1
+    } as MoveServoOptions);
   }
 }
 

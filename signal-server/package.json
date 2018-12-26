@@ -23,6 +23,7 @@
     "express": "^4.16.4"
   },
   "devDependencies": {
+    "@types/cors": "^2.8.4",
     "nodemon": "^1.18.9"
   }
 }
