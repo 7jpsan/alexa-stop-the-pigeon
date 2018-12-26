@@ -47,7 +47,7 @@ function initI2C(options) {
          console.error("Error initializing PCA9685");
          process.exit(-1);
       }
-      if (deg < 0) {
+      if (options.move < 0) {
          pwm.channelOff(servo);
       } else {
          const wave = options.min + (options.range() * (options.move / 100));
