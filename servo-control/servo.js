@@ -48,10 +48,10 @@ function initI2C(options) {
          process.exit(-1);
       }
       if (options.move < 0) {
-         pwm.channelOff(servo);
+         pwm.channelOff(options.position);
       } else {
          const wave = options.min + (options.range() * (options.move / 100));
-         pwm.setPulseLength(servo, wave);
+         pwm.setPulseLength(options.position, wave);
       }
    });
 }
