@@ -36,22 +36,22 @@ export class Owl implements Movable{
   }
 
   public moveUp(){
+    this.position.y = Math.max(this.position.y -= this.MOVE_STEP, this.POS_MIN);
+    this.move();
+  }
+  
+  public moveDown(){
     this.position.y = Math.min(this.position.y += this.MOVE_STEP, this.POS_MAX);
     this.move();
   }
 
-  public moveDown(){
-    this.position.y = Math.max(this.position.y -= this.MOVE_STEP, this.POS_MIN);
-    this.move();
-  }
-
   public moveRight(){
-    this.position.x = Math.min(this.position.x += this.MOVE_STEP, this.POS_MAX);
+    this.position.x = Math.max(this.position.x -= this.MOVE_STEP, this.POS_MIN);
     this.move();
   }
-
+  
   public moveLeft(){
-    this.position.x = Math.max(this.position.x -= this.MOVE_STEP, this.POS_MIN);
+    this.position.x = Math.min(this.position.x += this.MOVE_STEP, this.POS_MAX);
     this.move();
   }
   
