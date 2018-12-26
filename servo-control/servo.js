@@ -39,7 +39,7 @@ function initI2C(options) {
       i2c: i2cBus.openSync(1),
       address: 0x40,
       frequency: 60,
-      debug: true
+      debug: options.debug
    };
 
    pwm = new Pca9685Driver(i2cOptions, function (err) {

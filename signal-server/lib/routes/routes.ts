@@ -19,5 +19,21 @@ export class Routes {
         app.route('/head/reset') 
         // POST endpoint
         .post((req: Request, res: Response) => this.contactController.resetPosition(req, res));
+
+        app.route('/head/left') 
+        // POST endpoint
+        .post((req: Request, res: Response) => this.contactController.left(req, res));
+
+        app.route('/head/right') 
+        // POST endpoint
+        .post((req: Request, res: Response) => this.contactController.right(req, res));
+
+        app.route('/head/up') 
+        // POST endpoint
+        .post((req: Request, res: Response) => this.contactController.up(req, res));
+
+        app.route('/head/down') 
+        // POST endpoint
+        .post((req: Request, res: Response) => this.contactController.down(req, res));
     }
 }

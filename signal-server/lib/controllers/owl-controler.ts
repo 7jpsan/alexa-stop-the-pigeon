@@ -45,17 +45,21 @@ export class OwlController{
 
     public left(req: Request, res: Response){
       this.owl.moveLeft();
+      res.json(this);
     }
 
     public right(req: Request, res: Response){
       this.owl.moveRight();
+      res.json(this);
     }
 
     public up(req: Request, res: Response){
       this.owl.moveUp();
+      res.json(this);
     }
 
     public down(req: Request, res: Response){
       this.owl.moveDown();
+      res.json(this);
     }
 }
