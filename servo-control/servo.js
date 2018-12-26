@@ -1,54 +1,62 @@
-const servo = +process.argv[2] || 0;
-const deg = +process.argv[3] || 0;
-
-const params = {
-   maxDeg: () => 180,
-   min: () => 600,
-   max: () => 2600,
-   range: () => params.max() - params.min(),
-   step: () => params.range() / params.maxDeg()
-};
-
-let invalid = false;
-if(servo < 0 || servo > 15){
-   console.log("servo must be in range [0, 15]");
-   invalid = true;
-}
-if(deg > 100 || deg < -2 ){
-   console.log("deg must be in range [-1, 100]");
-   invalid = true;
-}
-if(invalid){
-   process.exit(-1);
+function validateParams(options) {
+   let invalid = false;
+   if (options.position < 0 || options.position > 15) {
+      console.log("position must be in range [0, 15]");
+      invalid = true;
+   }
+   if (options.move > 100 || options.move < -2) {
+      console.log("deg must be in range [-1, 100]");
+      invalid = true;
+   }
+   if (invalid) {
+      process.exit(-1);
+   }
 }
 
-const i2c = require('i2c-bus')
-const i2cBus = i2c;
-const Pca9685Driver = require("pca9685").Pca9685Driver;
+function moveServo(params) {
 
-process.on("SIGINT", () => {
-    console.log("\nGracefully shutting down from SIGINT (Ctrl-C)");
-    pwm.dispse();
-});
+   const options = {
+      debug: params.debug || false,
+      position: params.position,
+      maxDeg: params.maxDeg || 180,
+      min: params.min || 600,
+      max: params.max || 2600,
+      range: () => options.max - options.min,
+      step: () => options.range() / options.maxDeg,
+      move: params.move
+   };
+   validateParams(options);
+   initI2C(options);
+}
 
-const options = {
-    i2c: i2cBus.openSync(1),
-    address: 0x40,
-    frequency: 60,
-    debug: true
-};
+function initI2C(options) {
 
-pwm = new Pca9685Driver(options, function(err) {
-    if (err) {
-        console.error("Error initializing PCA9685");
-        process.exit(-1);
-    }
-   
-    if(deg < 0){
-       pwm.channelOff(servo);
-    }else{
-       const wave = params.min() + ( params.range() * (deg/100)); 
-       pwm.setPulseLength(servo, wave);
-    }
-});
+   const i2c = require('i2c-bus')
+   const i2cBus = i2c;
+   const Pca9685Driver = require("pca9685").Pca9685Driver;
 
+   const i2cOptions = {
+      i2c: i2cBus.openSync(1),
+      address: 0x40,
+      frequency: 60,
+      debug: true
+   };
+
+   pwm = new Pca9685Driver(i2cOptions, function (err) {
+      if (err) {
+         console.error("Error initializing PCA9685");
+         process.exit(-1);
+      }
+      if (deg < 0) {
+         pwm.channelOff(servo);
+      } else {
+         const wave = options.min + (options.range() * (options.move / 100));
+         pwm.setPulseLength(servo, wave);
+      }
+   });
+}
+
+
+module.exports = {
+   moveServo
+}

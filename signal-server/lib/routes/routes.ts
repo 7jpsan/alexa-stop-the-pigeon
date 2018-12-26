@@ -1,10 +1,10 @@
 // /lib/routes/crmRoutes.ts
 import {Request, Response, Application} from "express";
-import { HeadController } from "../controllers/head-controler";
+import { OwlController } from "../controllers/owl-controler";
 
 export class Routes {    
     
-    public contactController: HeadController = new HeadController();
+    public contactController: OwlController = new OwlController();
 
     public routes(app: Application): void {   
         
@@ -18,6 +18,6 @@ export class Routes {
         // Contact 
         app.route('/head/reset') 
         // POST endpoint
-        .post(this.contactController.resetPosition)
+        .post((req: Request, res: Response) => this.contactController.resetPosition(req, res));
     }
 }

@@ -8,8 +8,8 @@ export interface Movable{
   reset(): void;
 }
 
-export type Servo = {
-   pinPosition: number,
+export interface Servo {
+   pinPosition: number;
    setPosition: (pos: number) => void;
 }
 
