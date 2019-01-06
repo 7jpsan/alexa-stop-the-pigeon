@@ -29,6 +29,11 @@ function moveServo(params) {
    initI2C(options);
 }
 
+function powerDown(params){
+  params.pwm.channelOff(params.position);
+}
+   
+
 function initI2C(options) {
 
    const i2c = require('i2c-bus')
@@ -53,6 +58,7 @@ function initI2C(options) {
          const wave = options.min + (options.range() * (options.move / 100));
          pwm.setPulseLength(options.position, wave);
       }
+      setTimeout(powerDown.bind(null, {pwm: pwm, position: options.position}), 800);
    });
 }
 
