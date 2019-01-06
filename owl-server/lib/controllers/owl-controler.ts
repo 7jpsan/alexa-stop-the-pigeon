@@ -7,7 +7,7 @@ type MoveServoOptions = {
   move: number
 }
 
-const moveServo = require('../../../servo-control/servo').moveServo;
+const moveServo = require('../servo-control/servo').moveServo;
 
 class ServoImpl implements Servo{
   public constructor(public readonly pinPosition: number){
