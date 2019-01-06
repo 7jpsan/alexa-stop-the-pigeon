@@ -26,7 +26,7 @@ export class Owl implements Movable{
   private readonly MOVE_STEP = 10;
   private readonly POS_MAX = 100;
   private readonly POS_INIT_X = 50;
-  private readonly POS_INIT_Y = 50;
+  private readonly POS_INIT_Y = 40;
   
   private position: Position = {
     x: this.POS_INIT_X,
