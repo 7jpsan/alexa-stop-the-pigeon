@@ -25,11 +25,12 @@ export class Owl implements Movable{
   private readonly POS_MIN = 0;
   private readonly MOVE_STEP = 10;
   private readonly POS_MAX = 100;
-  private readonly POS_INIT = 50;
-
+  private readonly POS_INIT_X = 50;
+  private readonly POS_INIT_Y = 50;
+  
   private position: Position = {
-    x: this.POS_INIT,
-    y: this.POS_INIT
+    x: this.POS_INIT_X,
+    y: this.POS_INIT_Y
   };
 
   public constructor(private owlHead: OwlHead){ 
@@ -65,8 +66,8 @@ export class Owl implements Movable{
   }
 
   public reset(): void {
-    this.position.x = this.POS_INIT;
-    this.position.y = this.POS_INIT;
+    this.position.x = this.POS_INIT_X;
+    this.position.y = this.POS_INIT_Y;
     this.set(this.position);
   }
 }

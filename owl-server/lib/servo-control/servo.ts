@@ -1,4 +1,5 @@
-function validateParams(options) {
+
+function validateParams(options: any) {
    let invalid = false;
    if (options.position < 0 || options.position > 15) {
       console.log("position must be in range [0, 15]");
@@ -13,7 +14,7 @@ function validateParams(options) {
    }
 }
 
-function moveServo(params) {
+function moveServo(params: any) {
 
    const options = {
       debug: params.debug || false,
@@ -29,12 +30,12 @@ function moveServo(params) {
    initI2C(options);
 }
 
-function powerDown(params){
+function powerDown(params: any){
   params.pwm.channelOff(params.position);
 }
    
 
-function initI2C(options) {
+function initI2C(options: any) {
 
    const i2c = require('i2c-bus')
    const i2cBus = i2c;
@@ -47,7 +48,7 @@ function initI2C(options) {
       debug: options.debug
    };
 
-   pwm = new Pca9685Driver(i2cOptions, function (err) {
+   const pwm = new Pca9685Driver(i2cOptions, function (err: Error) {
       if (err) {
          console.error("Error initializing PCA9685");
          process.exit(-1);
