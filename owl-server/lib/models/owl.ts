@@ -23,7 +23,7 @@ export type OwlHead = {
 export class Owl implements Movable{
 
   private readonly POS_MIN = 0;
-  private readonly MOVE_STEP = 2.5;
+  private readonly MOVE_STEP = 1;
   private readonly POS_MAX = 100;
   private readonly POS_INIT_X = 50;
   private readonly POS_INIT_Y = 40;
