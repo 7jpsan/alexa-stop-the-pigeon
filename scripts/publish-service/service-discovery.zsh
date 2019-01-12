@@ -1,5 +1,5 @@
 #!/bin/zsh
-
+cd $(dirname $0)
 FILE_NAME=ipconfig.json
 IP_URL=ifconfig.me/all.json
 AWS_TOPIC=arn:aws:sns:eu-west-1:000050557359:service-discovery
