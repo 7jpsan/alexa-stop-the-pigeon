@@ -1,0 +1,13 @@
+[Unit]
+Description=Current IP Discovery
+After=network.target
+
+[Service]
+WorkingDirectory=/home/pi/alexa-stop-the-pigeon/services/discovery-service
+ExecStart=/bin/sh ./service-discovery.zsh
+Restart=on-failure
+User=pi
+Environment=PATH=/bin:/home/pi/.local/bin:/usr/bin:/usr/sbin:/local/bin
+
+[Install]
+WantedBy=multi-user.target
