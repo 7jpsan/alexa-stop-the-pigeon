@@ -27,6 +27,12 @@ export class Owl implements Movable{
   private readonly POS_MAX = 100;
   private readonly POS_INIT_X = 50;
   private readonly POS_INIT_Y = 20;
+
+  // Read from config/dynamo/s3
+  private readonly MIN_MAX = {
+    x: {min: 0, max: 100, init: 50, current: 50},
+    y: {min: 1, max: 44, init: 20, current: 20}
+  }
   
   private position: Position = {
     x: this.POS_INIT_X,
@@ -37,22 +43,22 @@ export class Owl implements Movable{
   }
 
   public moveUp(){
-    this.position.y = Math.max(this.position.y -= this.MOVE_STEP, this.POS_MIN);
+    this.position.y = Math.max(this.position.y -= this.MOVE_STEP, this.MIN_MAX.y.min);
     this.move();
   }
   
   public moveDown(){
-    this.position.y = Math.min(this.position.y += this.MOVE_STEP, this.POS_MAX);
+    this.position.y = Math.min(this.position.y += this.MOVE_STEP, this.MIN_MAX.y.max);
     this.move();
   }
 
   public moveRight(){
-    this.position.x = Math.max(this.position.x -= this.MOVE_STEP, this.POS_MIN);
+    this.position.x = Math.max(this.position.x -= this.MOVE_STEP, this.MIN_MAX.x.min);
     this.move();
   }
   
   public moveLeft(){
-    this.position.x = Math.min(this.position.x += this.MOVE_STEP, this.POS_MAX);
+    this.position.x = Math.min(this.position.x += this.MOVE_STEP, this.MIN_MAX.x.max);
     this.move();
   }
   
@@ -66,8 +72,8 @@ export class Owl implements Movable{
   }
 
   public reset(): void {
-    this.position.x = this.POS_INIT_X;
-    this.position.y = this.POS_INIT_Y;
+    this.position.x = this.MIN_MAX.x.init;
+    this.position.y = this.MIN_MAX.y.init;
     this.set(this.position);
   }
 }
