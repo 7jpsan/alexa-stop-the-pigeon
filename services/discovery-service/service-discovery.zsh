@@ -4,7 +4,6 @@ FILE_NAME=ipconfig.json
 IP_URL=ifconfig.me/all.json
 AWS_TOPIC=arn:aws:sns:eu-west-1:000050557359:service-discovery
 
-
 while true; 
 do
    curl -s ${IP_URL} > ${FILE_NAME}
