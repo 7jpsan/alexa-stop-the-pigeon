@@ -1,27 +1,26 @@
 import { Request, Response } from 'express';
-
 import { Owl, OwlHead, Servo } from '../models/owl';
+import { ServoController } from '../servo-control/servo';
 
 type MoveServoOptions = {
   position: number,
   move: number
 }
 
-const moveServo = require('../servo-control/servo').moveServo;
-
 class ServoImpl implements Servo{
+  
+  private servoController: ServoController;
+
   public constructor(public readonly pinPosition: number){
+    console.log("New servo controller created", new Date().toString());
+    this.servoController = new ServoController();
   }
 
-  public setPosition(pos: number): void{
-    moveServo({
+  public async setPosition(pos: number): Promise<void>{
+    await this.servoController.move({
       position: this.pinPosition,
       move: pos
     } as MoveServoOptions);
-    // moveServo({
-    //   position: this.pinPosition,
-    //   move: -1
-    // } as MoveServoOptions);
   }
 }
 
