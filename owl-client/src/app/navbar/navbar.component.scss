@@ -1,0 +1,28 @@
+.navbar{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #f7f7f7;
+  border-bottom: 1px #f0f0f0 solid;
+}
+
+h1{
+  border-bottom: 0.5rem solid black;
+  padding-left: 4rem;
+  // padding-right: 1rem;
+}
+
+img {
+  width: 50px;
+  // padding-bottom: 12px;
+  margin-right: -3.5rem;
+  z-index: 1;
+}
+
+:host{
+  background-color: red;
+}
