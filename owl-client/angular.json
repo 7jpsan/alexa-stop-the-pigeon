@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "stp-app": {
+    "owl-client": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/stp-app",
+            "outputPath": "dist/owl-client",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -27,7 +27,8 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css"
             ],
             "scripts": []
           },
@@ -61,18 +62,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "stp-app:build"
+            "browserTarget": "owl-client:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "stp-app:build:production"
+              "browserTarget": "owl-client:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "stp-app:build"
+            "browserTarget": "owl-client:build"
           }
         },
         "test": {
@@ -106,7 +107,7 @@
         }
       }
     },
-    "stp-app-e2e": {
+    "owl-client-e2e": {
       "root": "e2e/",
       "projectType": "application",
       "prefix": "",
@@ -115,11 +116,11 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "stp-app:serve"
+            "devServerTarget": "owl-client:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "stp-app:serve:production"
+              "devServerTarget": "owl-client:serve:production"
             }
           }
         },
@@ -135,5 +136,5 @@
       }
     }
   },
-  "defaultProject": "stp-app"
+  "defaultProject": "owl-client"
 }
