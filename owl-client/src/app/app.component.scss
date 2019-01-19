@@ -1,12 +1,12 @@
 .content{
   padding-top: 5rem;
+  padding-bottom: 5rem;
 }
 
-.footer{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  span {
-    margin: 0.5rem; 
-  }
+app-navbar{
+  background-color: #f7f7f7;
+}
+
+app-footer{
+  background-color: #f7f7f7;
 }
