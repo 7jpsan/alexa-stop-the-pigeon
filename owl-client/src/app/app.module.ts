@@ -11,9 +11,12 @@ import { MaterialModule } from './material/material.module';
 import { SharedModule } from './shared/shared.module';
 import { HttpClientModule } from '@angular/common/http';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { ControlComponent } from './control/control.component';
 
 const routes: Route[] = [
+  { path: '', component: ControlComponent},
   { path: 'login', component: LoginComponent },
+  // { path: 'control', component: ControlComponent},
   { path: '**', component: NotFoundComponent}
 ];
 
@@ -23,7 +26,8 @@ const routes: Route[] = [
     NavbarComponent,
     FooterComponent,
     LoginComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    ControlComponent
   ],
   imports: [
     BrowserModule,

@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
   public loginForm: FormGroup;
   public hide = true;
   public formErrors = {
-    name: '',
+    username: '',
     password: '',
   };
 
@@ -26,7 +26,6 @@ export class LoginComponent implements OnInit {
     public formService: FormService,
     public snackbar: MatSnackBar,
     public loginSvc: LoginService,
-    private router: Router
   ) { }
 
   public signUp() {
@@ -40,7 +39,7 @@ export class LoginComponent implements OnInit {
     if (this.loginForm.valid) {
 
       this.snackbar.open('Loggin in...', 'Close', {
-        duration: 3000,
+        duration: 1000,
       });
       this.loginSvc.login(this.loginForm.value);
 
@@ -67,13 +66,6 @@ export class LoginComponent implements OnInit {
 
     // initiate component
   public ngOnInit() {
-
-    this.loginSvc.isLoggedIn().subscribe((loggedIn) => {
-      if(loggedIn){
-        this.router.navigate(['/not']);
-      }
-    });
-
     this.buildForm();
   }
 

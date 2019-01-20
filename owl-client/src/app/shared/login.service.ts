@@ -15,12 +15,14 @@ export class LoginService {
 
   private basepath = "https://api.stp.jpsan.co.uk";
 
-  private loggedIn$ = new BehaviorSubject<boolean>(false);
-  private user$ = new BehaviorSubject<User>({
+  private anonUser: User =  {
     apiKey: '',
     id: '',
     username: 'anonymous'
-  });
+  };
+
+  private loggedIn$ = new BehaviorSubject<boolean>(false);
+  private user$ = new BehaviorSubject<User>(this.anonUser);
 
   constructor(private http: HttpClient) { }
 
@@ -30,6 +32,11 @@ export class LoginService {
 
   public user(): Observable<User>{
     return this.user$.asObservable();
+  }
+
+  public logout(){
+    this.loggedIn$.next(false);
+    this.user$.next(this.anonUser);
   }
 
   public login(data: {username: string, password: string}): void{

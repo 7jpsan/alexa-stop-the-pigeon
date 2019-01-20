@@ -19,6 +19,8 @@ export class AppComponent implements OnInit{
     this.loginSvc.isLoggedIn().subscribe((loggedIn) => {
       if(!loggedIn){
         this.router.navigate(['/login']);
+      }else{
+        this.router.navigate(['/']);
       }
     });
   }
