@@ -9,9 +9,10 @@ import { FooterComponent } from './footer/footer.component';
 import { LoginComponent } from './login/login.component';
 import { MaterialModule } from './material/material.module';
 import { SharedModule } from './shared/shared.module';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { ControlComponent } from './control/control.component';
+import { HttpConfigInterceptor } from './http-interceptor';
 
 const routes: Route[] = [
   { path: '', component: ControlComponent},
@@ -40,6 +41,7 @@ const routes: Route[] = [
     RouterModule.forRoot(routes)
   ],
   providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: HttpConfigInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]
 })
