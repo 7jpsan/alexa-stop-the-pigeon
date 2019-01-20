@@ -1,0 +1,25 @@
+<div class="login">
+    <mat-card>
+      <mat-card-title>
+        Login
+      </mat-card-title>
+      <mat-card-content>
+        <form [formGroup]="loginForm" class="form" novalidate>
+          <mat-form-field>
+            <mat-label>User name</mat-label>
+            <input name="username" matInput formControlName="username" placeholder="User name" type="name">
+            <mat-error *ngIf="formErrors.username">{{ formErrors.name }}</mat-error>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Password</mat-label>
+            <input name="password" matInput formControlName="password" placeholder="Password" [type]="hide ? 'password' : 'text'">
+            <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            <mat-error *ngIf="formErrors.password">{{ formErrors.password }}</mat-error>
+          </mat-form-field>
+        </form>
+      </mat-card-content>
+      <mat-card-actions align="end">
+        <button mat-raised-button mat-button color="primary" (click)="signUp()">Login</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ColorizeService } from '../colorize.service';
+import { ColorizeService } from '../shared/colorize.service';
 
 @Component({
   selector: 'app-footer',

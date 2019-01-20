@@ -14,7 +14,7 @@ export class ColorizeService {
   private time$: BehaviorSubject<string> = new BehaviorSubject("red");
 
   constructor() {
-    interval(500)
+    interval(1500)
     .pipe(
       map((x) => this.currentIndex = ++this.currentIndex % this.colors.length), 
       map((x) => this.colors[this.currentIndex])

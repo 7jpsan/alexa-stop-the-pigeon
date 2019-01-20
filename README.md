@@ -58,6 +58,8 @@ AWS:
  - Demoing Servo sg90 control with joystick: https://www.youtube.com/watch?v=4A7tJ0QH4L4
  - Audio Special Effects: https://www.freespecialeffects.co.uk/
  - I know we all hate it, but they have cool insights from time to time: https://www.w3schools.com/nodejs/nodejs_raspberrypi_gpio_intro.asp
+ - https://medium.com/@rubenvermeulen/running-angular-cli-over-https-with-a-trusted-certificate-4a0d5f92747a
+ - https://medium.freecodecamp.org/validating-reactive-forms-with-default-and-custom-form-field-validators-in-angular-5586dc51c4ae
   
 TBC:
   - Open ports in router to enable forwarding to raspi. Make sure the ip in the network is static for now.

@@ -1,22 +1,26 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { LoginService } from './shared/login.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
   title = 'Stop the pigeon';
-  selectedValue: string = "";
+  
+  constructor(
+    private router: Router,
+    private loginSvc: LoginService){
+  }
 
-  options = [];
-  constructor(){
-    const x = Array(50).fill(0).forEach((x,i)=>this.options.push(i));
+  public ngOnInit(){
+    this.loginSvc.isLoggedIn().subscribe((loggedIn) => {
+      if(!loggedIn){
+        this.router.navigate(['/login']);
+      }
+    });
   }
   
-  items = [
-    { value: "0", view: "zero" },
-    { value: "1", view: "one" },
-    { value: "2", view: "Two" },
-  ];
 }
