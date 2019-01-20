@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ColorizeService } from '../colorize.service';
 
 @Component({
   selector: 'app-footer',
@@ -7,15 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FooterComponent implements OnInit {
 
-  public iconColor = "red";
+  public iconColor;
+  public colors$;
 
-  private colors = ["red", "green", "pink", "blue", "purple", "black", "magenta"];
-
-  constructor() { }
+  constructor(private colorService: ColorizeService) { }
 
   ngOnInit() {
-    let index = 0;
-    setInterval(() => this.iconColor = this.colors[index++ % this.colors.length], 1000);
+    this.colorService.getColor().subscribe((color) => {
+      this.iconColor = color;
+    });
   }
 
 }

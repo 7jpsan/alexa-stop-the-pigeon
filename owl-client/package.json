@@ -7,7 +7,11 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "build-aot": "ng b --prod --aot",
+    "aws-deploy": "aws --profile psoares s3 sync --acl public-read --delete ./dist/owl-client ",
+    "deploy": "npm run build aot && npm run aws-deploy -- s3://app.jpsan.co.uk",
+    "deploy-stp": "npm run build-aot && npm run aws-deploy -- s3://stp-app/v1"
   },
   "private": true,
   "dependencies": {
@@ -23,6 +27,7 @@
     "@angular/router": "~7.2.0",
     "core-js": "^2.5.4",
     "hammerjs": "^2.0.8",
+    "randomcolor": "^0.5.3",
     "rxjs": "~6.3.3",
     "tslib": "^1.9.0",
     "zone.js": "~0.8.26"
